@@ -21,16 +21,7 @@ Resources:
             - 'ec2.amazonaws.com'
           Action:
           - 'sts:AssumeRole'
-      Policies:
-        - PolicyName: s3
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-            - Effect: Allow
-              Action:
-              - 's3:GetObject'
-              Resource:
-                - !Sub "arn:aws:s3:::udacity-project-2/*"
+      Path: "/"
   WebAppInstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
@@ -90,11 +81,12 @@ Resources:
         UserData:
           Fn::Base64: !Sub |
             #!/bin/bash
-            sudo apt-get update -y
-            sudo apt-get install nginx -y
-            sudo service nginx start
+            apt-get update -y
+            apt-get install unzip awscli -y
+            apt-get install apache2 -y
+            systemctl start apache2.service
             cd /var/www/html
-            aws s3 cp s3://udacity-project-2/index.html
+            aws s3 cp s3://udacity-project-2/index.html .
         ImageId: ami-0557a15b87f6559cf
         SecurityGroupIds:
           - !Ref WebserverSecurityGroup

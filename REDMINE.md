@@ -53,7 +53,7 @@ This command will create the AutoScaling group, EC2 instances, Load Balancer, an
 After the application stack is created, you can find the public URL of the Load Balancer in the CloudFormation outputs. Navigate to this URL in your browser, and you should see a message saying:
 
 ```
-URL to verify installation: `http://uda-p-webap-1bl80mxoqtza-1156059490.eu-central-1.elb.amazonaws.com/`
+URL to verify installation: `http://udacit-webap-hndv93ipzbkt-851316814.us-east-1.elb.amazonaws.com/`
 ```
 
 ### 4. Deleting the Infrastructure
